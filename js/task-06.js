@@ -12,23 +12,25 @@
 
 
 const input = document.querySelector("#validation-input")
-
+const tryValueLength = Number(input.dataset.length)
 
 input.addEventListener('blur', testValidInput);
-
+input.classList.add("validation-input")
 
 function testValidInput(event) {
 
-    if (event.currentTarget.value.length === Number(input.dataset.length)) {
-    
+    if (event.currentTarget.value.length === tryValueLength) {
+
         input.classList.add("valid")
-        if (input.classList.contains("invalid")) {
-            input.classList.remove("invalid")
-            input.classList.add("valid")
-        }
-    } else {
+        input.classList.remove("invalid")
+        return         
+    }
+    if (event.currentTarget.value.length !== testValidInput) {
+        input.classList.remove("valid")
         input.classList.add("invalid")
-    
+        return
     }
 };
   
+
+
